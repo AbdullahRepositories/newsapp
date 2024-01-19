@@ -1,0 +1,62 @@
+﻿@model newsapp.Models.News
+
+<br />
+<br />
+<br />
+<br />
+<br />
+@{
+    
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@if (TempData.ContainsKey("info"))
+{
+    <div class="alert alert-info">@TempData["info"]</div>
+}
+
+<h1 style="margin-left:30px">Edit</h1>
+
+<h4 style="margin-left:30px">News</h4>
+<hr />
+<div class="row" style="margin-left:30px">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Topic" class="control-label"></label>
+                <input asp-for="Topic" class="form-control" />
+                <span asp-validation-for="Topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Caregory </label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group" style="margin-bottom:15px; margin-top: 10px">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-left:30px">
+    <a asp-action="Index" class="btn btn-dark">Back to List</a>
+</div>
+
